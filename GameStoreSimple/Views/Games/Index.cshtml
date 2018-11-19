@@ -1,0 +1,83 @@
+﻿@model IEnumerable<GameStoreSimple.Models.Entities.Game>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css" />
+
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="table-responsive">
+    <table class="table" id="gamesTable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.GameId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genre.Name)
+                </th>
+            </tr>
+        </thead>
+        @*<tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre.GenreId)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.GameId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.GameId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.GameId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>*@
+    </table>
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#gamesTable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    url: '/api/games'
+                },
+                "columns": [
+                    { "data": "game_id" },
+                    { "data": "name" },
+                    { "data": "price" },
+                    { "data": "genre_name" },
+                ],
+                "ordering": true,
+                "paging": true,
+                "pagingType": "full_numbers",
+                "pageLength": 10
+            });
+        });
+    </script>
+}

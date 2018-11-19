@@ -11,4 +11,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Services\" />
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="Models\BusinessLogic\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
 </Project>
