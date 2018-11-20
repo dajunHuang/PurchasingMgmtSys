@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GameStoreSimple.Controllers;
+using GameStoreSimple.Helper.CustomExtension;
 using GameStoreSimple.Models.DataAccess;
 using GameStoreSimple.ViewModelMapper;
 using GameStoreSimple.ViewModels;
@@ -27,15 +28,15 @@ namespace GameStoreSimple.Apis
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(int draw, int start, int length)
+        public async Task<IActionResult> Get(int draw)
         {
-            var query = Request.Query;
             var totalGames = db.Games.Include(g => g.Genre).AsNoTracking();
 
             var totalGamesCount = totalGames.Count();
             var filteredGamesCount = totalGamesCount;
 
-            var pagingGames = totalGames.Skip(start).Take(length);
+            var query = Request.Query;
+            var pagingGames = totalGames.Paginate(query, GameViewModelMapper.GetPropertyNameFromGamesViewModel).AsNoTracking();
 
             List<GamesViewModel> gamesVMs = new List<GamesViewModel>();
             foreach (var game in await pagingGames.ToListAsync())

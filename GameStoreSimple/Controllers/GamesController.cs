@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using GameStoreSimple.Models.DataAccess;
 using GameStoreSimple.Models.Entities;
 using GameStoreSimple.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameStoreSimple.Controllers
 {
+    [Authorize]
     public class GamesController : Controller
     {
         private readonly GameStoreSimpleDbContext db;
