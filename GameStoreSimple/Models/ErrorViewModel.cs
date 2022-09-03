@@ -1,6 +1,6 @@
 using System;
 
-namespace GameStoreSimple.Models
+namespace MVC.Models
 {
     public class ErrorViewModel
     {

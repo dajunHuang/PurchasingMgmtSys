@@ -1,4 +1,4 @@
-﻿using GameStoreSimple.Models.Entities;
+﻿using MVC.Models.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.Models.DataAccess
+namespace MVC.Models.DataAccess
 {
     public class GameStoreSimpleDbContext : IdentityDbContext<ApplicationUser>
     {

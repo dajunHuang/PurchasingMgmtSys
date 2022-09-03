@@ -1,4 +1,4 @@
-﻿namespace GameStoreSimple.Services
+﻿namespace MVC.Services
 {
     public interface IPaginationService
     {

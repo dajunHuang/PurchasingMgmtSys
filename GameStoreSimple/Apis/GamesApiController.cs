@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GameStoreSimple.Controllers;
-using GameStoreSimple.Helper.CustomExtension;
-using GameStoreSimple.Models.DataAccess;
-using GameStoreSimple.ViewModelMapper;
-using GameStoreSimple.ViewModels;
+using MVC.Controllers;
+using MVC.Helper.CustomExtension;
+using MVC.Models.DataAccess;
+using MVC.ViewModelMapper;
+using MVC.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace GameStoreSimple.Apis
+namespace MVC.Apis
 {
     [Route("api/games")]
     [ApiController]

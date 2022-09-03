@@ -1,10 +1,10 @@
-﻿using GameStoreSimple.Models.DataAccess;
+﻿using MVC.Models.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.Services
+namespace MVC.Services
 {
     public abstract class BaseService
     {

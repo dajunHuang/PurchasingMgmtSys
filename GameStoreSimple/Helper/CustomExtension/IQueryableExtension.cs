@@ -1,4 +1,4 @@
-﻿using GameStoreSimple.ViewModelMapper;
+﻿using MVC.ViewModelMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.Helper.CustomExtension
+namespace MVC.Helper.CustomExtension
 {
     public static class IQueryableExtension
     {

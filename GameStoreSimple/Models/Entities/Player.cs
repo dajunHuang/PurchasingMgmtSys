@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.Models.Entities
+namespace MVC.Models.Entities
 {
-    public class Player : EntityBase
+    public class Player
     {
         public int PlayerId { get; set; }
 

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.ViewModels
+namespace MVC.ViewModels
 {
     public class GamesViewModel
     {

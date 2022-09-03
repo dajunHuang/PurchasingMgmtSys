@@ -1,4 +1,4 @@
-﻿namespace GameStoreSimple.Helper
+﻿namespace MVC.Helper
 {
     interface IPagedList
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GameStoreSimple.Models.DataAccess;
+using MVC.Models.DataAccess;
 
-namespace GameStoreSimple.Services
+namespace MVC.Services
 {
     public class GameService : BaseService, IGameService
     {

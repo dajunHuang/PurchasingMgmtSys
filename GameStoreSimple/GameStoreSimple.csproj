@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-GameStoreSimple-1D5956F2-05C5-40E5-928F-B7CCEDCBAF3D</UserSecretsId>
     <AssemblyName>PurchasingMgmtSys</AssemblyName>
-    <RootNamespace>GameStoreSimple</RootNamespace>
+    <RootNamespace>MVC</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.Helper
+namespace MVC.Helper
 {
     public static class Utility
     {

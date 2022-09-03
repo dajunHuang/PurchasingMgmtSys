@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace GameStoreSimple.Services
+namespace MVC.Services
 {
     public interface IGameService
     {

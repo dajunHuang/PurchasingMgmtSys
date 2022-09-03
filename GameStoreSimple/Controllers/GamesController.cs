@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GameStoreSimple.Models.DataAccess;
-using GameStoreSimple.Models.Entities;
-using GameStoreSimple.Services;
+using MVC.Models.DataAccess;
+using MVC.Models.Entities;
+using MVC.Services;
 using Microsoft.AspNetCore.Authorization;
 
-namespace GameStoreSimple.Controllers
+namespace MVC.Controllers
 {
     [Authorize]
     public class GamesController : Controller

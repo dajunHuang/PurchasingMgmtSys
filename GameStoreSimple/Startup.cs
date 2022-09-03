@@ -1,6 +1,6 @@
-﻿using GameStoreSimple.Models.DataAccess;
-using GameStoreSimple.Models.Entities;
-using GameStoreSimple.Services;
+﻿using MVC.Models.DataAccess;
+using MVC.Models.Entities;
+using MVC.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple
+namespace MVC
 {
     public class Startup
     {

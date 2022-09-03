@@ -1,5 +1,5 @@
-﻿using GameStoreSimple.Models.DataAccess;
-using GameStoreSimple.Models.Entities;
+﻿using MVC.Models.DataAccess;
+using MVC.Models.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.Areas.Identity.Pages.Account
+namespace MVC.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -81,7 +81,6 @@ namespace GameStoreSimple.Areas.Identity.Pages.Account
                     //create a new player
                     var player = new Player
                     {
-                        CreatedAt = DateTime.UtcNow,
                         Name = user.UserName,
                         UserId = user.Id
                     };

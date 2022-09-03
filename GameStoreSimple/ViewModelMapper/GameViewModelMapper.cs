@@ -1,11 +1,11 @@
-﻿using GameStoreSimple.Models.Entities;
-using GameStoreSimple.ViewModels;
+﻿using MVC.Models.Entities;
+using MVC.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple.ViewModelMapper
+namespace MVC.ViewModelMapper
 {
     public static class GameViewModelMapper
     {

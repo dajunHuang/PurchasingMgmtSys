@@ -1,4 +1,4 @@
-﻿using GameStoreSimple.Models.DataAccess;
+﻿using MVC.Models.DataAccess;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,7 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameStoreSimple
+namespace MVC
 {
     public class Program
     {
