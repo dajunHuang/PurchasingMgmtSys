@@ -22,6 +22,5 @@ namespace GameStoreSimple.Models.Entities
 
         //navigation property
         public Genre Genre { get; set; }
-        public ICollection<PlayerGame> PlayerLibrary { get; set; } 
     }
 }

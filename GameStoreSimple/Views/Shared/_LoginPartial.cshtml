@@ -6,6 +6,10 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
+    <ul class="nav navbar-nav">
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
+        <li><a asp-area="" asp-controller="Genres" asp-action="Index">Genres</a></li>
+    </ul>
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>

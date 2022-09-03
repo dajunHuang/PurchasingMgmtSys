@@ -23,7 +23,7 @@ namespace GameStoreSimple.Models.DataAccess
         public DbSet<Player> Players { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Game> Games { get; set; }
-        public DbSet<PlayerGame> PlayerLibraries { get; set; }
+        //public DbSet<PlayerGame> PlayerLibraries { get; set; }
 
 
 
@@ -36,8 +36,8 @@ namespace GameStoreSimple.Models.DataAccess
                 .WithOne(u => u.Player)
                 .HasForeignKey<Player>(p => p.UserId);
 
-            modelBuilder.Entity<PlayerGame>()
-                .HasKey(pg => new { pg.PlayerId, pg.GameId });
+            //modelBuilder.Entity<PlayerGame>()
+            //    .HasKey(pg => new { pg.PlayerId, pg.GameId });
         }
     }
 }

@@ -18,6 +18,22 @@ namespace GameStoreSimple
         {
             var host = CreateWebHostBuilder(args).Build();
 
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    var context = services.GetRequiredService<GameStoreSimpleDbContext>();
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                }
+            }
+
             SeedDb(host);
             host.Run();
         }

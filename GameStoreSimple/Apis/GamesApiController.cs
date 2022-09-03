@@ -19,12 +19,10 @@ namespace GameStoreSimple.Apis
     public class GamesApiController : ControllerBase
     {
         private readonly GameStoreSimpleDbContext db;
-        private readonly ILogger<GamesApiController> logger;
 
-        public GamesApiController(GameStoreSimpleDbContext db, ILogger<GamesApiController> logger)
+        public GamesApiController(GameStoreSimpleDbContext db)
         {
             this.db = db;
-            this.logger = logger;
         }
 
         [HttpGet]

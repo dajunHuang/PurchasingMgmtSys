@@ -3,19 +3,33 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>aspnet-GameStoreSimple-1D5956F2-05C5-40E5-928F-B7CCEDCBAF3D</UserSecretsId>
+    <AssemblyName>PurchasingMgmtSys</AssemblyName>
+    <RootNamespace>GameStoreSimple</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Identity\Services\**" />
+    <Compile Remove="Data\**" />
+    <Compile Remove="Models\BusinessLogic\**" />
+    <Compile Remove="Repositories\**" />
+    <Content Remove="Areas\Identity\Services\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Models\BusinessLogic\**" />
+    <Content Remove="Repositories\**" />
+    <EmbeddedResource Remove="Areas\Identity\Services\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Models\BusinessLogic\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+    <None Remove="Areas\Identity\Services\**" />
+    <None Remove="Data\**" />
+    <None Remove="Models\BusinessLogic\**" />
+    <None Remove="Repositories\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Services\" />
-    <Folder Include="Data\Migrations\" />
-    <Folder Include="Models\BusinessLogic\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
