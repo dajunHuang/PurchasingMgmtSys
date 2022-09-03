@@ -1,4 +1,4 @@
-@using Microsoft.AspNetCore.Identity
+﻿@using Microsoft.AspNetCore.Identity
 @using MVC.Models.Entities
 
 @inject SignInManager<IdentityUser> SignInManager
@@ -6,15 +6,41 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <ul class="nav navbar-nav">
-        <li><a asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
-        <li><a asp-area="" asp-controller="Genres" asp-action="Index">Genres</a></li>
-    </ul>
+<ul class="nav navbar-nav">
+    <li><a asp-area="" asp-controller="Games" asp-action="Index">Games</a></li>
+    <li><a asp-area="" asp-controller="Genres" asp-action="Index">Genres</a></li>
+
+
+    @if (UserManager.GetUserName(User) == "Administrator1987")
+    {
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">仓库物资</a></li>
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">批准采购</a></li>
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">修改账号密码</a></li>
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">修改采购员</a></li>
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">修改合格供方</a></li>
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">修改供方物资</a></li>
+    }
+    else
+    {
+        <li><a asp-area="" asp-controller="Games" asp-action="Index">申请采购</a></li>
+    }
+
+</ul>
+
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-            </li>
+            @if (UserManager.GetUserName(User) == "Administrator1987")
+            {
+                <li>
+                    <a asp-area="Identity"title="Manage">Hello Admin!</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                </li>
+            }
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
             </li>

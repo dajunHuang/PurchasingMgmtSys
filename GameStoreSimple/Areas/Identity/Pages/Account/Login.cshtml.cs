@@ -65,6 +65,10 @@ namespace MVC.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+                if(Input.UserName == "Admin" && Input.Password == "Admin")
+                {
+
+                }
                 var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {

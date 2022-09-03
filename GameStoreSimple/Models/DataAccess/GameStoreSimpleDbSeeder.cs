@@ -11,13 +11,16 @@ namespace MVC.Models.DataAccess
     public class GameStoreSimpleDbSeeder
     {
         private readonly GameStoreSimpleDbContext db;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly DateTime _createdAt = DateTime.UtcNow;
 
         private readonly Random _random = new Random();
 
-        public GameStoreSimpleDbSeeder(GameStoreSimpleDbContext db)
+        public GameStoreSimpleDbSeeder(GameStoreSimpleDbContext db,
+            UserManager<IdentityUser> userManager)
         {
             this.db = db;
+            this._userManager = userManager;
         }
 
         public async Task Seed()
@@ -26,6 +29,13 @@ namespace MVC.Models.DataAccess
 
             using (var transaction = await db.Database.BeginTransactionAsync())
             {
+                var user = new IdentityUser {Email = "djhuang_1@qq.com", UserName = "Administrator1987" };
+                var result = await _userManager.CreateAsync(user, "Administrator1987");
+                if (result.Succeeded)
+                {
+                    await db.SaveChangesAsync();
+                }
+
                 if (!await db.Genres.AnyAsync())
                 {
                     var genreList = new List<Genre>
