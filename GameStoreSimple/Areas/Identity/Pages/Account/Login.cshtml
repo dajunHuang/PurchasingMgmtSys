@@ -23,6 +23,9 @@
                     <input asp-for="Input.Password" class="form-control" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
+                <label style="font-size:10px;">
+                    -->Default admin name & pwd: Administrator1987<--
+                </label>
                 <div class="form-group">
                     <div class="checkbox">
                         <label asp-for="Input.RememberMe">
@@ -39,9 +42,6 @@
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                     </p>
                 </div>
-                <label>
-                    *Default admin name&pwd: Administrator1987
-                </label>
             </form>
         </section>
     </div>

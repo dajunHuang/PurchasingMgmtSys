@@ -23,7 +23,7 @@ namespace MVC
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<GameStoreSimpleDbContext>();
+                    var context = services.GetRequiredService<ApplicationDbContext>();
                     context.Database.EnsureCreated();
                 }
                 catch (Exception ex)
@@ -41,9 +41,9 @@ namespace MVC
         {
             var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
 
-            using (var scope = scopeFactory.CreateScope())
+            using (var scope = scopeFactory.CreateScope())1
             {
-                var seeder = scope.ServiceProvider.GetService<GameStoreSimpleDbSeeder>();
+                var seeder = scope.ServiceProvider.GetService<ApplicationDbSeeder>();
                 seeder.Seed().Wait();
             }
         }

@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MVC.Models.DataAccess
 {
-    public class GameStoreSimpleDbSeeder
+    public class ApplicationDbSeeder
     {
-        private readonly GameStoreSimpleDbContext db;
+        private readonly ApplicationDbContext db;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly DateTime _createdAt = DateTime.UtcNow;
 
         private readonly Random _random = new Random();
 
-        public GameStoreSimpleDbSeeder(GameStoreSimpleDbContext db,
+        public ApplicationDbSeeder(ApplicationDbContext db,
             UserManager<IdentityUser> userManager)
         {
             this.db = db;
@@ -65,8 +65,6 @@ namespace MVC.Models.DataAccess
                 if (!await db.Games.AnyAsync())
                 {
                     var rpg = await db.Genres.SingleOrDefaultAsync(g => g.Name == "RPG");
-                    var fps = await db.Genres.SingleOrDefaultAsync(g => g.Name == "FPS");
-                    var rts = await db.Genres.SingleOrDefaultAsync(g => g.Name == "RTS");
 
                     var gameList = new List<Game>();
                     for (int i = 0; i < 1000; i++)
@@ -76,26 +74,6 @@ namespace MVC.Models.DataAccess
                             GenreId = rpg.GenreId,
                             Name = "RPG GAME" + (i + 1).ToString(),
                             Price = _random.Next(5, 100)
-                        };
-                        gameList.Add(game);
-                    }
-                    for (int i = 0; i < 1000; i++)
-                    {
-                        Game game = new Game
-                        {
-                            GenreId = fps.GenreId,
-                            Name = "FPS GAME" + (i + 1).ToString(),
-                            Price = _random.Next(10, 120)
-                        };
-                        gameList.Add(game);
-                    }
-                    for (int i = 0; i < 1000; i++)
-                    {
-                        Game game = new Game
-                        {
-                            GenreId = rts.GenreId,
-                            Name = "RTS GAME" + (i + 1).ToString(),
-                            Price = _random.Next(20, 150)
                         };
                         gameList.Add(game);
                     }

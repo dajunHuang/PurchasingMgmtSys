@@ -15,10 +15,10 @@ namespace MVC.Controllers
     [Authorize]
     public class GamesController : Controller
     {
-        private readonly GameStoreSimpleDbContext db;
+        private readonly ApplicationDbContext db;
         private readonly IGameService _gameService;
 
-        public GamesController(GameStoreSimpleDbContext db, IGameService gameService)
+        public GamesController(ApplicationDbContext db, IGameService gameService)
         {
             this.db = db;
             this._gameService = gameService;
@@ -27,8 +27,8 @@ namespace MVC.Controllers
         // GET: Games
         public async Task<IActionResult> Index()
         {
-            var gameStoreSimpleDbContext = db.Games.Include(g => g.Genre);
-            return View(await gameStoreSimpleDbContext.ToListAsync());
+            var applicationDbContext = db.Games.Include(g => g.Genre);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Games/Details/5

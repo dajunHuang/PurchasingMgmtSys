@@ -9,22 +9,21 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MVC.Models.DataAccess
 {
-    public class GameStoreSimpleDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
-        public GameStoreSimpleDbContext()
+        public ApplicationDbContext()
         {
         }
 
-        public GameStoreSimpleDbContext(DbContextOptions<GameStoreSimpleDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
 
         }
 
-        //public DbSet<User> User { get; set; }
+        //public DbSet<IdentityUser> Users { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Game> Games { get; set; }
-        //public DbSet<PlayerGame> PlayerLibraries { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

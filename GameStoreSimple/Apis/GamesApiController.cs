@@ -18,9 +18,9 @@ namespace MVC.Apis
     [ApiController]
     public class GamesApiController : ControllerBase
     {
-        private readonly GameStoreSimpleDbContext db;
+        private readonly ApplicationDbContext db;
 
-        public GamesApiController(GameStoreSimpleDbContext db)
+        public GamesApiController(ApplicationDbContext db)
         {
             this.db = db;
         }

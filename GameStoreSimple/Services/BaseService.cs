@@ -8,16 +8,16 @@ namespace MVC.Services
 {
     public abstract class BaseService
     {
-        protected GameStoreSimpleDbContext db;
+        protected ApplicationDbContext db;
 
         public BaseService()
         {
-            db = new GameStoreSimpleDbContext();
+            db = new ApplicationDbContext();
         }
 
-        public BaseService(GameStoreSimpleDbContext dBContext)
+        public BaseService(ApplicationDbContext dBContext)
         {
-            db = dBContext ?? new GameStoreSimpleDbContext();
+            db = dBContext ?? new ApplicationDbContext();
         }
 
     }

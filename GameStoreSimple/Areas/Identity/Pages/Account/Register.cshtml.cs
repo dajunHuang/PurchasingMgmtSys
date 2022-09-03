@@ -20,12 +20,12 @@ namespace MVC.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly GameStoreSimpleDbContext db;
+        private readonly ApplicationDbContext db;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
-            GameStoreSimpleDbContext db)
+            ApplicationDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -14,9 +14,9 @@ namespace MVC.Controllers
     [Authorize]
     public class GenresController : Controller
     {
-        private readonly GameStoreSimpleDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public GenresController(GameStoreSimpleDbContext context)
+        public GenresController(ApplicationDbContext context)
         {
             _context = context;
         }

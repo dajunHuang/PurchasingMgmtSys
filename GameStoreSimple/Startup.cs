@@ -37,11 +37,11 @@ namespace MVC
             });
 
 
-            services.AddDbContext<GameStoreSimpleDbContext>(options =>
+            services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<GameStoreSimpleDbSeeder>();
+            services.AddTransient<ApplicationDbSeeder>();
 
             //identity 
             services.AddIdentity<IdentityUser, IdentityRole>(cfg =>
@@ -50,7 +50,7 @@ namespace MVC
                 cfg.Password.RequireUppercase = false;
                 cfg.Password.RequireNonAlphanumeric = false;
             })
-            .AddEntityFrameworkStores<GameStoreSimpleDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
             //services.AddScoped<SignInManager<IdentityUser>, SignInManager<IdentityUser>>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

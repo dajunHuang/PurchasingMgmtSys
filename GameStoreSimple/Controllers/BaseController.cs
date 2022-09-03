@@ -9,6 +9,6 @@ namespace MVC.Controllers
 {
     public class BaseController : Controller
     {
-        protected GameStoreSimpleDbContext db = new GameStoreSimpleDbContext();        
+        protected ApplicationDbContext db = new ApplicationDbContext();        
     }
 }

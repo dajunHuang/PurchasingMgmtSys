@@ -13,7 +13,7 @@ namespace MVC.Services
 
         }
 
-        public GameService(GameStoreSimpleDbContext dBContext) : base(dBContext)
+        public GameService(ApplicationDbContext dBContext) : base(dBContext)
         {
 
         }      
