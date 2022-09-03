@@ -24,7 +24,6 @@ namespace MVC
                 try
                 {
                     var context = services.GetRequiredService<GameStoreSimpleDbContext>();
-                    context.Database.EnsureDeleted();
                     context.Database.EnsureCreated();
                 }
                 catch (Exception ex)

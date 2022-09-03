@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MVC.Models
+namespace MVC.Models.Entities
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int UID { get; set; }
-        public string AccountNumber { get; set; }
-        public string Pwd { get; set; }
-        public int UserType { get; set; }
+        public string Name { get; set; }
     }
 }

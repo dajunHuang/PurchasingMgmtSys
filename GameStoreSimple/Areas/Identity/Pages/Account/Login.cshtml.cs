@@ -16,9 +16,9 @@ namespace MVC.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager)
+        public LoginModel(SignInManager<IdentityUser> signInManager)
         {
             _signInManager = signInManager;
         }
@@ -34,8 +34,7 @@ namespace MVC.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            public string UserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -66,9 +65,7 @@ namespace MVC.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     return LocalRedirect(returnUrl);
@@ -78,10 +75,10 @@ namespace MVC.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }
-            }
 
-            // If we got this far, something failed, redisplay form
+            }
             return Page();
         }
+
     }
 }

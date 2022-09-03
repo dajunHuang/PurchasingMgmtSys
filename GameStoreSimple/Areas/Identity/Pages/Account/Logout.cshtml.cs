@@ -14,9 +14,9 @@ namespace MVC.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public LogoutModel(SignInManager<ApplicationUser> signInManager)
+        public LogoutModel(SignInManager<IdentityUser> signInManager)
         {
             _signInManager = signInManager;
         }

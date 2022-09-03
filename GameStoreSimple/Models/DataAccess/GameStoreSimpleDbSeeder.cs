@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace MVC.Models.DataAccess
 {
@@ -21,7 +22,8 @@ namespace MVC.Models.DataAccess
 
         public async Task Seed()
         {
-            await db.Database.MigrateAsync();
+            //await db.Database.MigrateAsync();
+
             using (var transaction = await db.Database.BeginTransactionAsync())
             {
                 if (!await db.Genres.AnyAsync())
@@ -48,6 +50,7 @@ namespace MVC.Models.DataAccess
                     await db.Genres.AddRangeAsync(genreList);
                     await db.SaveChangesAsync();
                 }
+
 
                 if (!await db.Games.AnyAsync())
                 {

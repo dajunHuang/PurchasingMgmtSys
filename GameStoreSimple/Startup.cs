@@ -44,14 +44,14 @@ namespace MVC
             services.AddTransient<GameStoreSimpleDbSeeder>();
 
             //identity 
-            services.AddIdentity<ApplicationUser, IdentityRole>(cfg =>
+            services.AddIdentity<IdentityUser, IdentityRole>(cfg =>
             {
                 cfg.User.RequireUniqueEmail = true;
                 cfg.Password.RequireUppercase = false;
                 cfg.Password.RequireNonAlphanumeric = false;
             })
             .AddEntityFrameworkStores<GameStoreSimpleDbContext>().AddDefaultUI().AddDefaultTokenProviders();
-            //services.AddScoped<SignInManager<ApplicationUser>, SignInManager<ApplicationUser>>();
+            //services.AddScoped<SignInManager<IdentityUser>, SignInManager<IdentityUser>>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
