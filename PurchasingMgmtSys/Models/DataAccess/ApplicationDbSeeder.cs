@@ -23,7 +23,7 @@ namespace MVC.Models.DataAccess
             this._userManager = userManager;
         }
 
-        public async Task Seed()
+        public async Task Seed() //数据库添加初始数据
         {
             using (var transaction = await db.Database.BeginTransactionAsync())
             {

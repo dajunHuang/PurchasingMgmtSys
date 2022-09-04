@@ -21,8 +21,16 @@ namespace MVC.Models.DataAccess
 
         }
 
-        //public DbSet<IdentityUser> Users { get; set; }
-        public DbSet<Game> Games { get; set; }
+        public DbSet<Game> Games { get; set; } //原模板中的表
+
+        //public DbSet<IdentityUser> Users { get; set; } //自带的表，可代替User和Buyer_message表用
+        
+        //下面是在数据库中创建的表
+        public DbSet<Supplier_message> Supplier_message { get; set; }
+        public DbSet<Supplier_material> Supplier_material { get; set; }
+        public DbSet<Material_message> Material_message { get; set; }
+        public DbSet<Record> Record { get; set; }
+        public DbSet<Warehouse_material> Warehouse_material { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

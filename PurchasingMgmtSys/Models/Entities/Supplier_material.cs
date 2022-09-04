@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace MVC.Models.Entities
 {
-    public class Game //原模板中的类
+    public class Supplier_material
     {
         [Key]
         [Required]
-        public int GameId { get; set; }
+        public int NoteId { get; set; }   //pk
 
         [Required]
-        [MaxLength(50)]
-        [Display(Name = "Game Name")]
-        public string Name { get; set; }
+        public int MID { get; set; }
 
-        [Display(Name = "Price")]
+        [Required]
+        public int SID { get; set; }
+
+        [Required]
         public decimal Price { get; set; }
     }
 }
