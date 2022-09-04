@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <UserSecretsId>aspnet-GameStoreSimple-1D5956F2-05C5-40E5-928F-B7CCEDCBAF3D</UserSecretsId>
+    <UserSecretsId>aspnet-PurchasingMgmtSys-1D5956F2-05C5-40E5-928F-B7CCEDCBAF3D</UserSecretsId>
     <AssemblyName>PurchasingMgmtSys</AssemblyName>
     <RootNamespace>MVC</RootNamespace>
   </PropertyGroup>
