@@ -24,7 +24,7 @@ namespace MVC
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
-                    context.Database.EnsureCreated();
+                    context.Database.EnsureCreated();   //创建数据库
                 }
                 catch (Exception ex)
                 {
