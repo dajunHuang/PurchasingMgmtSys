@@ -25,8 +25,6 @@ namespace MVC.Models.DataAccess
 
         public async Task Seed()
         {
-            //await db.Database.MigrateAsync();
-
             using (var transaction = await db.Database.BeginTransactionAsync())
             {
                 var user = new IdentityUser {Email = "djhuang_1@qq.com", UserName = "Administrator1987" };
@@ -37,7 +35,7 @@ namespace MVC.Models.DataAccess
                 if (!await db.Games.AnyAsync())
                 {
                     var gameList = new List<Game>();
-                    for (int i = 0; i < 1000; i++)
+                    for (int i = 0; i < 20; i++)
                     {
                         Game game = new Game
                         {
@@ -51,7 +49,6 @@ namespace MVC.Models.DataAccess
                 }
                 transaction.Commit();
             }
-
         }
     }
 }
