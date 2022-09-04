@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MVC.Models.DataAccess;
 using MVC.Models.Entities;
-using MVC.Services;
 using Microsoft.AspNetCore.Authorization;
 
 namespace MVC.Controllers
@@ -16,19 +15,17 @@ namespace MVC.Controllers
     public class GamesController : Controller
     {
         private readonly ApplicationDbContext db;
-        private readonly IGameService _gameService;
 
-        public GamesController(ApplicationDbContext db, IGameService gameService)
+        public GamesController(ApplicationDbContext db)
         {
             this.db = db;
-            this._gameService = gameService;
         }
 
         // GET: Games
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = db.Games.Include(g => g.Genre);
-            return View(await applicationDbContext.ToListAsync());
+            var applicationDbContext = await db.Games.ToListAsync();
+            return View(applicationDbContext);
         }
 
         // GET: Games/Details/5
@@ -40,7 +37,6 @@ namespace MVC.Controllers
             }
 
             var game = await db.Games
-                .Include(g => g.Genre)
                 .FirstOrDefaultAsync(m => m.GameId == id);
             if (game == null)
             {
@@ -53,7 +49,6 @@ namespace MVC.Controllers
         // GET: Games/Create
         public IActionResult Create()
         {
-            ViewData["GenreId"] = new SelectList(db.Set<Genre>(), "GenreId", "GenreId");
             return View();
         }
 
@@ -62,7 +57,7 @@ namespace MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GameId,Name,Price,GenreId")] Game game)
+        public async Task<IActionResult> Create([Bind("GameId,Name,Price")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +65,6 @@ namespace MVC.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenreId"] = new SelectList(db.Set<Genre>(), "GenreId", "GenreId", game.GenreId);
             return View(game);
         }
 
@@ -87,7 +81,6 @@ namespace MVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenreId"] = new SelectList(db.Set<Genre>(), "GenreId", "GenreId", game.GenreId);
             return View(game);
         }
 
@@ -96,7 +89,7 @@ namespace MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GameId,Name,Price,GenreId")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("GameId,Name,Price")] Game game)
         {
             if (id != game.GameId)
             {
@@ -123,7 +116,6 @@ namespace MVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GenreId"] = new SelectList(db.Set<Genre>(), "GenreId", "GenreId", game.GenreId);
             return View(game);
         }
 
@@ -136,7 +128,6 @@ namespace MVC.Controllers
             }
 
             var game = await db.Games
-                .Include(g => g.Genre)
                 .FirstOrDefaultAsync(m => m.GameId == id);
             if (game == null)
             {

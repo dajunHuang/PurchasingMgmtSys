@@ -1,6 +1,5 @@
 ﻿using MVC.Models.DataAccess;
 using MVC.Models.Entities;
-using MVC.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -51,12 +50,12 @@ namespace MVC
                 cfg.Password.RequireNonAlphanumeric = false;
             })
             .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
-            //services.AddScoped<SignInManager<IdentityUser>, SignInManager<IdentityUser>>();
+            services.AddScoped<SignInManager<IdentityUser>, SignInManager<IdentityUser>>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //application services
-            services.AddScoped<IGameService, GameService>();
+            //services.AddScoped<IGameService, GameService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

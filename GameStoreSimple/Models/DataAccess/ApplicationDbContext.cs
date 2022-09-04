@@ -22,7 +22,6 @@ namespace MVC.Models.DataAccess
         }
 
         //public DbSet<IdentityUser> Users { get; set; }
-        public DbSet<Genre> Genres { get; set; }
         public DbSet<Game> Games { get; set; }
 
 

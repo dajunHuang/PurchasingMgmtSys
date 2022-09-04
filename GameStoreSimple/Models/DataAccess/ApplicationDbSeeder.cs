@@ -31,47 +31,16 @@ namespace MVC.Models.DataAccess
             {
                 var user = new IdentityUser {Email = "djhuang_1@qq.com", UserName = "Administrator1987" };
                 var result = await _userManager.CreateAsync(user, "Administrator1987");
-                if (result.Succeeded)
-                {
-                    await db.SaveChangesAsync();
-                }
-
-                if (!await db.Genres.AnyAsync())
-                {
-                    var genreList = new List<Genre>
-                    {
-                        new Genre
-                        {
-                            CreatedAt = _createdAt,
-                            Name = "RPG"
-                        },
-                        new Genre
-                        {
-                            CreatedAt = _createdAt,
-                            Name = "FPS"
-                        },
-                        new Genre
-                        {
-                            CreatedAt = _createdAt,
-                            Name = "RTS"
-                        }
-                    };
-
-                    await db.Genres.AddRangeAsync(genreList);
-                    await db.SaveChangesAsync();
-                }
+                await db.SaveChangesAsync();
 
 
                 if (!await db.Games.AnyAsync())
                 {
-                    var rpg = await db.Genres.SingleOrDefaultAsync(g => g.Name == "RPG");
-
                     var gameList = new List<Game>();
                     for (int i = 0; i < 1000; i++)
                     {
                         Game game = new Game
                         {
-                            GenreId = rpg.GenreId,
                             Name = "RPG GAME" + (i + 1).ToString(),
                             Price = _random.Next(5, 100)
                         };

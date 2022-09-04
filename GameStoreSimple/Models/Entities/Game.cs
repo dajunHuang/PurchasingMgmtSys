@@ -17,10 +17,5 @@ namespace MVC.Models.Entities
 
         [Display(Name = "Price")]
         public decimal Price { get; set; }
-
-        public int GenreId { get; set; }   //fk
-
-        //navigation property
-        public Genre Genre { get; set; }
     }
 }

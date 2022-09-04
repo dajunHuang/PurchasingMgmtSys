@@ -29,13 +29,10 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Price)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Genre.Name)
-                            </th>
                             <th></th>
                         </tr>
                     </thead>
-                    @*<tbody>
+                    <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
@@ -49,55 +46,16 @@
                                     @Html.DisplayFor(modelItem => item.Price)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Genre.GenreId)
-                                </td>
-                                <td>
                                     <a asp-action="Edit" asp-route-id="@item.GameId">Edit</a> |
                                     <a asp-action="Details" asp-route-id="@item.GameId">Details</a> |
                                     <a asp-action="Delete" asp-route-id="@item.GameId">Delete</a>
                                 </td>
                             </tr>
                         }
-                    </tbody>*@
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts{
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
-    <script>
-
-        $(document).ready(function () {
-            $('#gamesTable').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax": {
-                    url: '/api/games'
-                },
-                "columns": [
-                    { "data": "game_id" },
-                    { "data": "name" },
-                    { "data": "price" },
-                    { "data": "genre_name", "orderable": false },
-                    { "data": "manage_link", "orderable": false },
-                ],
-                "ordering": true,
-                "paging": true,
-                "pagingType": "full_numbers",
-                "pageLength": 10,
-
-                "columnDefs": [{
-                    "targets": 4,
-                    "data": "manage_link",
-                    "render": function (data, type, row, meta) {
-                        return '<a href="Games/Edit/' + row.game_id + '">Edit</a> | ' +
-                               '<a href="Games/Details/' + row.game_id + '">Details</a> | ' +
-                               '<a href="Games/Delete/' + row.game_id + '">Delete</a>';
-                    }
-                }]
-            });
-        });
-    </script>
-}

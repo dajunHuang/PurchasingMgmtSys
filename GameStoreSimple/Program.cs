@@ -41,7 +41,7 @@ namespace MVC
         {
             var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
 
-            using (var scope = scopeFactory.CreateScope())1
+            using (var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<ApplicationDbSeeder>();
                 seeder.Seed().Wait();
