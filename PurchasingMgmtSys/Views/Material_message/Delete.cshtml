@@ -1,0 +1,25 @@
+﻿@model MVC.Models.Entities.Material_message
+
+@{
+    ViewData["Title"] = "删除物资";
+}
+
+<h2>删除</h2>
+
+<h3>确定要删除该物资吗？</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaterialName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaterialName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="MID" />
+        <input type="submit" value="删除" class="btn btn-default" />
+    </form>
+</div>
