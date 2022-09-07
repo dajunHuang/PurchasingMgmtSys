@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MVC.Models.Entities.Supplier_message>
+
+@{
+    ViewData["Title"] = "Suppiler_message";
+}
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css" />
+}
+
+    <h2>Supplier_message</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table " id="Supplier_messageTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FactoryName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Director)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FactoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Director)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.SId">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.SId">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.SId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

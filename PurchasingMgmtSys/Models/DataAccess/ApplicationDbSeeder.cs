@@ -31,7 +31,6 @@ namespace MVC.Models.DataAccess
                 var result = await _userManager.CreateAsync(user, "Administrator1987");
                 await db.SaveChangesAsync();
 
-
                 if (!await db.Games.AnyAsync())
                 {
                     var gameList = new List<Game>();

@@ -1,0 +1,30 @@
+﻿@model MVC.Models.Entities.Supplier_message
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Supplier_message</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FactoryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FactoryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

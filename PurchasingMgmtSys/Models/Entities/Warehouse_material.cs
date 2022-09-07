@@ -13,7 +13,7 @@ namespace MVC.Models.Entities
         public int WID { get; set; }
 
         [Required]
-        public int MID { get; set; }
+        public Material_message MID { get; set; }
 
         [Required]
         public int NowNumber { get; set; }

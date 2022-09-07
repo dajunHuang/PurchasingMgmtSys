@@ -13,10 +13,10 @@ namespace MVC.Models.Entities
         public int NoteId { get; set; }   //pk
 
         [Required]
-        public int MID { get; set; }
+        public Material_message MID { get; set; }
 
         [Required]
-        public int SID { get; set; }
+        public Supplier_message SID { get; set; }
 
         [Required]
         public decimal Price { get; set; }
