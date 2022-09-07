@@ -17,6 +17,5 @@ namespace MVC.Models.Entities
         [Display(Name = "物资名称")]
         public string MaterialName { get; set; }
 
-        public virtual ICollection<Supplier_material> Supplier_Materials { get; set; }
     }
 }

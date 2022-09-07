@@ -22,7 +22,7 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.Material_message)
+                                @Html.DisplayNameFor(model => model.MID)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.NowNumber)
@@ -35,15 +35,13 @@
                         {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Material_message.MaterialName)
+                                    @Html.DisplayFor(modelItem => item.MID.MaterialName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.NowNumber)
                                 </td>
                                 <td>
-                                 <!--   <a asp-action="Edit" asp-route-id="@item.Material_message.MID">编辑</a> |
-                                    <a asp-action="Details" asp-route-id="@item.Material_message.MID">详情</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.Material_message.MID">删除</a> -->
+
                                 </td>
                             </tr>
                         }

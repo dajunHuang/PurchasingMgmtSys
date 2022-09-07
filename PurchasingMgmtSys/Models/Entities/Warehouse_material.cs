@@ -14,15 +14,11 @@ namespace MVC.Models.Entities
 
         [Required]
         [Display(Name = "物资")]
-        public Material_message Material_message { get; set; }
+        public Material_message MID { get; set; }
 
         [Required]
         [Display(Name = "物资数量")]
         public int NowNumber { get; set; }
 
-        public string MaterialName()
-        {
-            return Material_message.MaterialName;
-        }
     }
 }

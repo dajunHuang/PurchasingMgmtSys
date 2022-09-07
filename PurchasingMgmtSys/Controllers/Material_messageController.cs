@@ -24,7 +24,7 @@ namespace MVC.Controllers
         // GET: Material_message
         public async Task<IActionResult> Index()
         {
-            var mmStoreSimpleDbContext = db.Warehouse_material.Include(g => g.Material_message);
+            var mmStoreSimpleDbContext = db.Warehouse_material.Include(g => g.MID);
             var applicationDbContext = await mmStoreSimpleDbContext.ToListAsync();
             return View(applicationDbContext);
         }

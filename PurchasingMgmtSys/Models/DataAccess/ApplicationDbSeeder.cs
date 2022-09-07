@@ -27,7 +27,14 @@ namespace MVC.Models.DataAccess
         {
             using (var transaction = await db.Database.BeginTransactionAsync())
             {
-                var user = new IdentityUser {Email = "djhuang_1@qq.com", UserName = "Administrator1987" };
+                var material = new Material_message { MaterialName = "测试物资" };
+                await db.Material_message.AddAsync(material);
+                var warehouse = new Warehouse_material { MID = material, NowNumber = 10 };
+                await db.Warehouse_material.AddAsync(warehouse);
+                var user = new IdentityUser { Email = "djhuang_1@qq.com", UserName = "Administrator1987" };
+                var supplier1 = new Supplier_message { FactoryName = "供方1", Director = "余则成" };
+
+                await db.Supplier_message.AddAsync(supplier1);
                 var result = await _userManager.CreateAsync(user, "Administrator1987");
                 await db.SaveChangesAsync();
 
