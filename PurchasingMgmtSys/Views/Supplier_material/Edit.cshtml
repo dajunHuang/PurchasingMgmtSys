@@ -1,0 +1,44 @@
+﻿@model MVC.Models.Entities.Supplier_material
+
+@{
+    ViewData["Title"] = "编辑供方物资信息";
+}
+
+<h2>Edit</h2>
+
+<h4>Game</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NoteId" />
+            <div class="form-group">
+                <label asp-for="SID" class="control-label"></label>
+                <select asp-for="SID" asp-items="ViewBag.SID" class="form-control"></select>
+                <span asp-validation-for="SID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MID" class="control-label"></label>
+                <select asp-for="MID" asp-items="ViewBag.MID" class="form-control"></select>
+                <span asp-validation-for="MID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">物资种类列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

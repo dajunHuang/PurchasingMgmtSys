@@ -1,0 +1,37 @@
+﻿@model MVC.Models.Entities.Supplier_material
+@using MVC.Models
+@{
+    ViewData["Title"] = "新增供方物资";
+}
+<h2>新增</h2>
+<h4>物资</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="SID" class="control-label"></label>
+                <select asp-for="SID" asp-items="ViewBag.SID" class="form-control">
+                </select>
+                <span asp-validation-for="SID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MID" class="control-label"></label>
+                <select asp-for="MID" asp-items="ViewBag.MID" class="form-control">
+                </select>
+                <span asp-validation-for="MID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="提交" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">供方物资列表</a>
+</div>

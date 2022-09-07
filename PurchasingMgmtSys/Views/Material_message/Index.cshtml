@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MVC.Models.Entities.Warehouse_material>
+
+@{
+    ViewData["Title"] = "仓库物资";
+}
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css" />
+}
+
+    <h2>仓库物资</h2>
+
+    <p>
+        <a asp-action="Categories">查看物资种类</a>
+        <a asp-action="Create">新增物资种类</a>
+    </p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table " id="gamesTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Material_message)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NowNumber)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Material_message.MaterialName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NowNumber)
+                                </td>
+                                <td>
+                                 <!--   <a asp-action="Edit" asp-route-id="@item.Material_message.MID">编辑</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Material_message.MID">详情</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Material_message.MID">删除</a> -->
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
