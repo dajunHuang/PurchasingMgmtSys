@@ -71,14 +71,5 @@ namespace PurchasingMgmtSys.Controllers
             }
             return View(user);
         }
-
-        public async Task<IActionResult> Delete(string id)
-        {
-            var user = await db.Users.FindAsync(id);
-            db.Users.Remove(user);
-            await db.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
     }
 }

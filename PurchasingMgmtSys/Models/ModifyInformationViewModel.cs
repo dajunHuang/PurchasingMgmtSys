@@ -16,14 +16,6 @@ namespace MVC.Models
         [Display(Name = "New Email")]
         public string NewEmail { get; set; }
 
-        [Required]
-        [DataType(DataType.Text)]
-        [Display(Name = "Sex")]
-        public string Sex
-        {
-            get; set;
-        }
-
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Confirm new Email")]
         [Compare("NewEmail", ErrorMessage = "The new Email and confirmation Email do not match.")]
