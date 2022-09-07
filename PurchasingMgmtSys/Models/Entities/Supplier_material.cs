@@ -13,12 +13,10 @@ namespace MVC.Models.Entities
         public int NoteId { get; set; }   //pk
 
         [Required]
-        [Display(Name = "物资")]
         public Material_message MID { get; set; }
 
         [Required]
-        [Display(Name = "供方")]
-        public virtual Supplier_message SID { get; set; }
+        public Supplier_message SID { get; set; }
 
         [Required]
         public decimal Price { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,13 +14,13 @@ namespace MVC.Models.Entities
         public int RID { get; set; }
 
         [Required]
-        public int SID { get; set; }
+        public Supplier_message SID { get; set; }
 
         [Required]
-        public int MID { get; set; }
+        public Material_message MID { get; set; }
 
         [Required]
-        public int UID { get; set; }
+        public IdentityUser UID { get; set; }
 
         [Required]
         public int BuyNumber { get; set; }

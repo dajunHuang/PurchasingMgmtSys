@@ -13,12 +13,9 @@ namespace MVC.Models.Entities
         public int WID { get; set; }
 
         [Required]
-        [Display(Name = "物资")]
         public Material_message MID { get; set; }
 
         [Required]
-        [Display(Name = "物资数量")]
         public int NowNumber { get; set; }
-
     }
 }
