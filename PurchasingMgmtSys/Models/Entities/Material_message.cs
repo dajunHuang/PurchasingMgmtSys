@@ -10,9 +10,13 @@ namespace MVC.Models.Entities
     {
         [Key]
         [Required]
+        [Display(Name = "物资ID")]
         public int MID { get; set; }
 
         [Required]
+        [Display(Name = "物资名称")]
         public string MaterialName { get; set; }
+
+        public virtual ICollection<Supplier_material> Supplier_Materials { get; set; }
     }
 }
