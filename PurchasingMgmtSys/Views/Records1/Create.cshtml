@@ -1,0 +1,55 @@
+﻿@model MVC.Models.Entities.Record
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>发起新申请</h2>
+
+<h4>申请信息</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SID" class="control-label"></label>
+                <select asp-for="SID" class="form-control" asp-items="ViewBag.SID"></select>
+                <span asp-validation-for="SID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MID" class="control-label"></label>
+                <select asp-for="MID" class="form-control" asp-items="ViewBag.MID"></select>
+                <span asp-validation-for="MID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UID" class="control-label"></label>
+                <select asp-for="UID" class="form-control" asp-items="ViewBag.UID"></select>
+                <span asp-validation-for="UID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuyNumber" class="control-label"></label>
+                <input asp-for="BuyNumber" class="form-control" />
+                <span asp-validation-for="BuyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+           
+            
+            <div class="form-group">
+                <input type="submit" value="提交" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
