@@ -13,25 +13,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RID)
+                @Html.DisplayNameFor(model => model.UID.UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BuyNumber)
+                @Html.DisplayNameFor(model => model.SID.FactoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MID.MaterialName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.BuyNumber)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Time)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UID)
             </th>
             <th></th>
         </tr>
@@ -40,29 +37,42 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RID)
+                @Html.DisplayFor(modelItem => item.UID.UserName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BuyNumber)
+                @Html.DisplayFor(modelItem => item.SID.FactoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MID.MaterialName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.BuyNumber)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Time)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SID.SId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UID.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.RID">确认采购</a>              
-            </td>
+            @if (item.State == 1)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.RID">确认采购</a>
+                </td>
+            }
+            else if (item.State == 0)
+            {
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.RID">删除请求</a> | 正在等待批准
+                </td>
+            }
+            else if (item.State == 2)
+            {
+                <td>
+                    已完成收购
+                </td>
+            }
+
         </tr>
 }
     </tbody>

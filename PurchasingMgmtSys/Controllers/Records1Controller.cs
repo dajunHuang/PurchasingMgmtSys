@@ -16,41 +16,27 @@ namespace PurchasingMgmtSys.Controllers
     public class Records1Controller : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-
-        public Records1Controller(ApplicationDbContext context)
+        public Records1Controller(ApplicationDbContext context,
+            UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Records1
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Record.Include(r => r.SID).Include(r => r.MID).Include(r => r.UID);
+            var db = _context.Record.Where(a => a.UID.Id == _userManager.GetUserId(User));
+
+            var applicationDbContext = db.Include(r => r.SID).Include(r => r.MID).Include(r => r.UID).OrderBy(r => r.State);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Records1/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var record = await _context.Record
-                .Include(r => r.SID)
-                .Include(r => r.UID)
-                .FirstOrDefaultAsync(m => m.RID == id);
-            if (record == null)
-            {
-                return NotFound();
-            }
-
-            return View(record);
-        }
-
-        // GET: Records1/Create
+        // GET: Records1/CreateC:\Users\djhua\Desktop\MVC\PurchasingMgmtSys\Controllers\Records1Controller.cs
         public IActionResult Create()
         {
             var ss = from b in _context.Supplier_message
@@ -59,16 +45,8 @@ namespace PurchasingMgmtSys.Controllers
             var ms = from b in _context.Material_message
                      orderby b.MaterialName
                      select b;
-            var us = from b in _context.Users
-                     orderby b.UserName
-                     select b;
-            ViewBag.SID = new SelectList(ss.AsNoTracking(), "SId", "SId", null);
-            
-            ViewBag.MID = new SelectList(ms.AsNoTracking(), "MID", "MID", null);
-            
-            ViewBag.UID = new SelectList(us.AsNoTracking(), "Id", "Id", null);
-            
-    
+            ViewBag.SID = new SelectList(ss.AsNoTracking(), "SId", "FactoryName", null);
+            ViewBag.MID = new SelectList(ms.AsNoTracking(), "MID", "MaterialName", null);
             return View();
         }
 
@@ -79,25 +57,17 @@ namespace PurchasingMgmtSys.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Record record)
         {
-            int MID = int.Parse(Request.Form["MID"][0]);
-            int SID = int.Parse(Request.Form["SID"][0]);           
-            string UID = Request.Form["UID"][0];
-
-            decimal Price = decimal.Parse(Request.Form["Price"][0]);
+            int MID1 = int.Parse(Request.Form["MID"][0]);
+            int SID = int.Parse(Request.Form["SID"][0]);
             int BuyNumber = int.Parse(Request.Form["BuyNumber"][0]);
+            string UID = _userManager.GetUserId(User);
+
+            decimal Price = _context.Supplier_material.FirstOrDefault(p => p.MID.MID == MID1).Price;
             
             DateTime time = DateTime.Now;
-            Material_message mm = _context.Material_message.FirstOrDefault(p => p.MID == MID);
+            Material_message mm = _context.Material_message.FirstOrDefault(p => p.MID == MID1);
             Supplier_message sm = _context.Supplier_message.FirstOrDefault(p => p.SId == SID);
             IdentityUser us = _context.Users.FirstOrDefault(p => p.Id == UID);
-        
-            Console.WriteLine(us.Id);
-            Console.WriteLine(us.Id);
-            Console.WriteLine(us.Id);
-            Console.WriteLine(us.Id);
-            Console.WriteLine(us.Id);
-            Console.WriteLine(us.Id);
-            Console.WriteLine(us.Id);
 
             Record record1 = new Record { MID = mm, SID = sm, UID = us, BuyNumber = BuyNumber, Price = Price, State = 0, Time = time, };
             if (mm != null && sm != null)
@@ -110,64 +80,46 @@ namespace PurchasingMgmtSys.Controllers
                     
         }
 
-        // GET: Records1/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var record = await _context.Record.FindAsync(id);
-            if (record == null)
-            {
-                return NotFound();
-            }
-           
-            return View(record);
-        }
-
-        // POST: Records1/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Record record)
-        {
-            if (id != record.RID)
-            {
-                return NotFound();
-            }
-            
+            Record record = _context.Record.Include(g => g.MID).FirstOrDefault(p => p.RID == id);
             record.State = 2;
+            _context.Update(record);
+            await _context.SaveChangesAsync();
 
-          
-
-            if (record.State==2)
+            Material_message MID1 = record.MID;
+            var materials = _context.Warehouse_material.Include(g => g.MID);
+            if (materials == null)
             {
-                try
+                var warehouse_Material1 = new Warehouse_material
                 {
-                    _context.Update(record);
-                  
-                    await _context.SaveChangesAsync();
-                  
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    
-                    if (!RecordExists(record.RID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                    NowNumber = record.BuyNumber,
+                    MID = MID1
+                };
+                _context.Warehouse_material.Add(warehouse_Material1);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-           
-            return View(record);
+
+            var warehouse = materials.FirstOrDefault(p => p.MID.MID == MID1.MID);
+            if (warehouse == null)
+            {
+                var warehouse_Material1 = new Warehouse_material
+                {
+                    NowNumber = record.BuyNumber,
+                    MID = MID1
+                };
+                _context.Warehouse_material.Add(warehouse_Material1);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            warehouse.NowNumber += record.BuyNumber;
+            _context.Update(record);
+            await _context.SaveChangesAsync();
+            
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Records1/Delete/5
@@ -181,6 +133,7 @@ namespace PurchasingMgmtSys.Controllers
             var record = await _context.Record
                 .Include(r => r.SID)
                 .Include(r => r.UID)
+                .Include(r => r.MID)
                 .FirstOrDefaultAsync(m => m.RID == id);
             if (record == null)
             {
@@ -201,9 +154,6 @@ namespace PurchasingMgmtSys.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RecordExists(int id)
-        {
-            return _context.Record.Any(e => e.RID == id);
-        }
+
     }
 }

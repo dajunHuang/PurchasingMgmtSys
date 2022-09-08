@@ -12,6 +12,18 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.MID.MaterialName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MID.MaterialName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SID.FactoryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SID.FactoryName)
+        </dd>
+        <dt>
             @Html.DisplayNameFor(model => model.BuyNumber)
         </dt>
         <dd>
@@ -28,24 +40,6 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Time)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SID.Director)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UID.Id)
         </dd>
     </dl>
     

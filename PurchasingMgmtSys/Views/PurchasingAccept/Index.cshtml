@@ -18,25 +18,22 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.SID.FactoryName)
+                                @Html.DisplayNameFor(model => model.UID.UserName)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.MID.MaterialName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.UID.UserName)
+                                @Html.DisplayNameFor(model => model.SID.FactoryName)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.BuyNumber)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Time)
-                            </th>
-                            <th>
                                 @Html.DisplayNameFor(model => model.Price)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.State)
+                                @Html.DisplayNameFor(model => model.Time)
                             </th>
                             <th></th>
                         </tr>
@@ -46,29 +43,35 @@
                         {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.SID.FactoryName)
+                                @Html.DisplayFor(modelItem => item.UID.UserName)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.MID.MaterialName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.UID.UserName)
+                                @Html.DisplayFor(modelItem => item.SID.FactoryName)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.BuyNumber)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Time)
-                            </td>
-                            <td>
                                 @Html.DisplayFor(modelItem => item.Price)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.State)
+                                @Html.DisplayFor(modelItem => item.Time)
                             </td>
-                            <td>
-                                <a asp-action="Accept" asp-route-id="@item.RID">Accept</a>
-                            </td>
+                            @if (item.State == 0)
+                            {
+                                <td>
+                                    <a asp-action="Accept" asp-route-id="@item.RID">Accept</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    已批准
+                                </td>
+                            }
                         </tr>
                         }
                     </tbody>
