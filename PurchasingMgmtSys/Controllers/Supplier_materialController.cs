@@ -70,8 +70,8 @@ namespace MVC.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Supplier_material ss)
         {
-            int MID = int.Parse(Request.Form["SID"][0]);
-            int SID = int.Parse(Request.Form["MID"][0]);
+            int MID = int.Parse(Request.Form["MID"][0]);
+            int SID = int.Parse(Request.Form["SID"][0]);
             decimal Price = decimal.Parse(Request.Form["Price"][0]);
             Material_message mm = db.Material_message.FirstOrDefault(p => p.MID == MID);
             Supplier_message sm = db.Supplier_message.FirstOrDefault(p => p.SId == SID);
@@ -114,15 +114,15 @@ namespace MVC.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Supplier_material ss)
         {
             if (id != ss.NoteId)
             {
                 return NotFound();
             }
-            int MID = int.Parse(Request.Form["SID"][0]);
-            int SID = int.Parse(Request.Form["MID"][0]);
+            int MID = int.Parse(Request.Form["MID"][0]);
+            int SID = int.Parse(Request.Form["SID"][0]);
             decimal Price = decimal.Parse(Request.Form["Price"][0]);
             Material_message mm = db.Material_message.FirstOrDefault(p => p.MID == MID);
             Supplier_message sm = db.Supplier_message.FirstOrDefault(p => p.SId == SID);
