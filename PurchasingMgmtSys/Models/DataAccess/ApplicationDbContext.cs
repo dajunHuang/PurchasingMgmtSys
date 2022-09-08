@@ -21,7 +21,6 @@ namespace MVC.Models.DataAccess
 
         }
 
-        public DbSet<Game> Games { get; set; } //原模板中的表
 
         //public DbSet<IdentityUser> Users { get; set; } //自带的表，可代替User和Buyer_message表用
         

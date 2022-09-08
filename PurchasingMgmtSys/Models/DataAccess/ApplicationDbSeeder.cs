@@ -39,22 +39,6 @@ namespace MVC.Models.DataAccess
                 var user = new IdentityUser { Email = "djhuang_1@qq.com", UserName = "Administrator1987" };
                 await _userManager.CreateAsync(user, "Administrator1987");
                 await db.SaveChangesAsync();
-
-                if (!await db.Games.AnyAsync())
-                {
-                    var gameList = new List<Game>();
-                    for (int i = 0; i < 20; i++)
-                    {
-                        Game game = new Game
-                        {
-                            Name = "RPG GAME" + (i + 1).ToString(),
-                            Price = _random.Next(5, 100)
-                        };
-                        gameList.Add(game);
-                    }
-                    await db.Games.AddRangeAsync(gameList);
-                    await db.SaveChangesAsync();
-                }
                 transaction.Commit();
             }
         }
