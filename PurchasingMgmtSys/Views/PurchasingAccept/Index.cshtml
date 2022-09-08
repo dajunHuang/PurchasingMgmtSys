@@ -1,0 +1,80 @@
+﻿@model IEnumerable<MVC.Models.Entities.Record>
+
+@{
+    ViewData["Title"] = "批准申请";
+}
+
+@section Styles{
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css" />
+}
+
+    <h2>批准申请</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table " id="gamesTable">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SID.FactoryName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MID.MaterialName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UID.UserName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BuyNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Time)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.State)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SID.FactoryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MID.MaterialName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UID.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BuyNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Time)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.State)
+                            </td>
+                            <td>
+                                <a asp-action="Accept" asp-route-id="@item.RID">Accept</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
