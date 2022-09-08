@@ -10,12 +10,15 @@ namespace MVC.Models.Entities
     {
         [Key]
         [Required]
+        [Display(Name = "仓库记录ID")]
         public int WID { get; set; }
 
         [Required]
+        [Display(Name = "物资ID")]
         public Material_message MID { get; set; }
 
         [Required]
+        [Display(Name = "物资数量")]
         public int NowNumber { get; set; }
     }
 }
