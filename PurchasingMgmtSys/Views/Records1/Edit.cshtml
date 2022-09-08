@@ -1,0 +1,36 @@
+﻿@model MVC.Models.Entities.Record
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<script>
+function myFunction(){
+	alert("已确认");
+}
+</script>
+
+<h2>确认采购</h2>
+
+<h4>确认已采购？</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RID" />
+            
+            <div class="form-group">
+                <input type="submit" value="已采购" onclick="myFunction()" class="btn btn-default" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

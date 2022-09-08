@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic;  
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -21,6 +21,7 @@ namespace MVC.Models.DataAccess
 
         }
 
+        public DbSet<Game> Games { get; set; } //原模板中的表
 
         //public DbSet<IdentityUser> Users { get; set; } //自带的表，可代替User和Buyer_message表用
         

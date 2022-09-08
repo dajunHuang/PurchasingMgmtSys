@@ -18,6 +18,6 @@ namespace MVC.Models.Entities
         [Required]
         public string Director { get; set; }
 
-        public virtual ICollection<Supplier_material> Supplier_Materials { get; set; }
+        public virtual ICollection<Record> Record { get; set; }
     }
 }
