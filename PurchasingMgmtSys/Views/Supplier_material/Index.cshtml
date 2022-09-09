@@ -21,10 +21,10 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.SID)
+                                @Html.DisplayNameFor(model => model.SID.FactoryName)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.MID)
+                                @Html.DisplayNameFor(model => model.MID.MaterialName)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Price)
@@ -46,9 +46,8 @@
                                 @Html.DisplayFor(modelItem => item.Price)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.NoteId">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.NoteId">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.NoteId">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@item.NoteId">修改</a> |
+                                <a asp-action="Delete" asp-route-id="@item.NoteId">删除</a>
                             </td>
                         </tr>
                         }

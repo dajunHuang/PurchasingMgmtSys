@@ -28,24 +28,6 @@ namespace MVC.Controllers
             return View(applicationDbContext);
         }
 
-        // GET: Supplier_message/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var supplier_message = await db.Supplier_message
-               .FirstOrDefaultAsync(m => m.SId == id);
-            if (supplier_message == null)
-            {
-                return NotFound();
-            }
-
-            return View(supplier_message);
-        }
-
         // GET: Supplier_message/Create
         public IActionResult Create()
         {

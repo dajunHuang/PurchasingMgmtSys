@@ -40,7 +40,7 @@ namespace MVC.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "记住我")]
             public bool RememberMe { get; set; }
         }
 
@@ -65,10 +65,6 @@ namespace MVC.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
-                if(Input.UserName == "Admin" && Input.Password == "Admin")
-                {
-
-                }
                 var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
@@ -76,7 +72,7 @@ namespace MVC.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "登陆失败");
                     return Page();
                 }
 

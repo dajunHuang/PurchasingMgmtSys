@@ -26,7 +26,8 @@ namespace PurchasingMgmtSys.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = await db.Users.ToListAsync();
-            applicationDbContext.RemoveAt(applicationDbContext.Count-1); //删除管理员那一条记录
+            //applicationDbContext.RemoveAt(applicationDbContext.Count-1); //删除管理员那一条记录
+            applicationDbContext.RemoveAt(0);
             return View(applicationDbContext);
         }
 
@@ -76,6 +77,5 @@ namespace PurchasingMgmtSys.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
     }
 }

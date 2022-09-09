@@ -29,24 +29,6 @@ namespace MVC.Controllers
             return View(applicationDbContext);
         }
 
-        // GET: Material_message/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var supplier_material = await db.Supplier_material
-                .Include(g => g.SID).Include(g => g.MID)
-                .FirstOrDefaultAsync(m => m.NoteId == id);
-
-            if (supplier_material == null)
-            {
-                return NotFound();
-            }
-            return View(supplier_material);
-        }
-
         // GET:  Material_message/Create
         public IActionResult Create()
         {

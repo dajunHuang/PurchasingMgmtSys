@@ -4,7 +4,8 @@
     ViewData["Title"] = "Profile";
 }
 
-<h4>@ViewData["Title"]</h4>
+<h2>基本信息</h2>
+
 <div class="row">
     <div class="col-md-6">
         <form id="profile-form" method="post">
@@ -17,7 +18,7 @@
                 <label asp-for="Input.Email"></label>
                 <input asp-for="Input.Email" class="form-control" />
             </div>
-            <button type="submit" class="btn btn-default">Save</button>
+            <button type="submit" class="btn btn-default">保存</button>
         </form>
     </div>
 </div>

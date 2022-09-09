@@ -8,10 +8,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css" />
 }
 
-    <h2>Supplier_message</h2>
+    <h2>供应方信息</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">创建供应方</a>
 </p>
 <div class="container">
     <div class="row">
@@ -46,9 +46,8 @@
                                     @Html.DisplayFor(modelItem => item.Director)
                                 </td>
                                 <td>
-                                    <a asp-action="Edit" asp-route-id="@item.SId">Edit</a> |
-                                    <a asp-action="Details" asp-route-id="@item.SId">Details</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.SId">Delete</a>
+                                    <a asp-action="Edit" asp-route-id="@item.SId">修改</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.SId">删除</a>
                                 </td>
                             </tr>
                         }
